@@ -1,0 +1,34 @@
+﻿version: "3.9"
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres_container
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: monitorpricesdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  monitorprices:
+    build:
+      context: .               # 👈 Ajustado: contexto raíz del proyecto
+      dockerfile: Dockerfile   # 👈 Mantiene tu Dockerfile desde raíz
+    container_name: monitorprices_container
+    depends_on:
+      - postgres
+    environment:
+      POSTGRES_HOST: postgres          # 👈 Añadido para entrypoint.sh
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: monitorpricesdb
+      ConnectionStrings__DefaultConnection: "Host=postgres;Database=monitorpricesdb;Username=myuser;Password=mypassword"
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+
+volumes:
+  postgres_data:
