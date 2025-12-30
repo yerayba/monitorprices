@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MonitorPrices.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+086913ad7eaaba60b2705efcd2f2406a24fa92a2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+292d923e85c248a937fbd09e4be591cdbeb78b9a")]
 [assembly: System.Reflection.AssemblyProductAttribute("MonitorPrices.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MonitorPrices.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
