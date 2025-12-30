@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/yerayblancoaldao/RiderProjects/MonitorPrices/MonitorPrices.Repository/MonitorPrices.Repository.csproj": {}
+    "/Users/yerayblancoaldao/Documents/GitHub/MonitorPrices/MonitorPrices.Repository/MonitorPrices.Repository.csproj": {}
   },
   "projects": {
-    "/Users/yerayblancoaldao/RiderProjects/MonitorPrices/MonitorPrices.Domain/MonitorPrices.Domain.csproj": {
+    "/Users/yerayblancoaldao/Documents/GitHub/MonitorPrices/MonitorPrices.Domain/MonitorPrices.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/yerayblancoaldao/RiderProjects/MonitorPrices/MonitorPrices.Domain/MonitorPrices.Domain.csproj",
+        "projectUniqueName": "/Users/yerayblancoaldao/Documents/GitHub/MonitorPrices/MonitorPrices.Domain/MonitorPrices.Domain.csproj",
         "projectName": "MonitorPrices.Domain",
-        "projectPath": "/Users/yerayblancoaldao/RiderProjects/MonitorPrices/MonitorPrices.Domain/MonitorPrices.Domain.csproj",
+        "projectPath": "/Users/yerayblancoaldao/Documents/GitHub/MonitorPrices/MonitorPrices.Domain/MonitorPrices.Domain.csproj",
         "packagesPath": "/Users/yerayblancoaldao/.nuget/packages/",
-        "outputPath": "/Users/yerayblancoaldao/RiderProjects/MonitorPrices/MonitorPrices.Domain/obj/",
+        "outputPath": "/Users/yerayblancoaldao/Documents/GitHub/MonitorPrices/MonitorPrices.Domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/yerayblancoaldao/.nuget/NuGet/NuGet.Config"
@@ -346,14 +346,14 @@
         }
       }
     },
-    "/Users/yerayblancoaldao/RiderProjects/MonitorPrices/MonitorPrices.Repository/MonitorPrices.Repository.csproj": {
+    "/Users/yerayblancoaldao/Documents/GitHub/MonitorPrices/MonitorPrices.Repository/MonitorPrices.Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/yerayblancoaldao/RiderProjects/MonitorPrices/MonitorPrices.Repository/MonitorPrices.Repository.csproj",
+        "projectUniqueName": "/Users/yerayblancoaldao/Documents/GitHub/MonitorPrices/MonitorPrices.Repository/MonitorPrices.Repository.csproj",
         "projectName": "MonitorPrices.Repository",
-        "projectPath": "/Users/yerayblancoaldao/RiderProjects/MonitorPrices/MonitorPrices.Repository/MonitorPrices.Repository.csproj",
+        "projectPath": "/Users/yerayblancoaldao/Documents/GitHub/MonitorPrices/MonitorPrices.Repository/MonitorPrices.Repository.csproj",
         "packagesPath": "/Users/yerayblancoaldao/.nuget/packages/",
-        "outputPath": "/Users/yerayblancoaldao/RiderProjects/MonitorPrices/MonitorPrices.Repository/obj/",
+        "outputPath": "/Users/yerayblancoaldao/Documents/GitHub/MonitorPrices/MonitorPrices.Repository/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/yerayblancoaldao/.nuget/NuGet/NuGet.Config"
@@ -369,8 +369,8 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "/Users/yerayblancoaldao/RiderProjects/MonitorPrices/MonitorPrices.Domain/MonitorPrices.Domain.csproj": {
-                "projectPath": "/Users/yerayblancoaldao/RiderProjects/MonitorPrices/MonitorPrices.Domain/MonitorPrices.Domain.csproj"
+              "/Users/yerayblancoaldao/Documents/GitHub/MonitorPrices/MonitorPrices.Domain/MonitorPrices.Domain.csproj": {
+                "projectPath": "/Users/yerayblancoaldao/Documents/GitHub/MonitorPrices/MonitorPrices.Domain/MonitorPrices.Domain.csproj"
               }
             }
           }

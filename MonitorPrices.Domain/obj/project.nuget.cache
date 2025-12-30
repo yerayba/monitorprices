@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "w6/7PUBQJCM=",
+  "dgSpecHash": "YQKRQPGmo5M=",
   "success": true,
-  "projectFilePath": "/Users/yerayblancoaldao/RiderProjects/MonitorPrices/MonitorPrices.Domain/MonitorPrices.Domain.csproj",
+  "projectFilePath": "/Users/yerayblancoaldao/Documents/GitHub/MonitorPrices/MonitorPrices.Domain/MonitorPrices.Domain.csproj",
   "expectedPackageFiles": [
     "/Users/yerayblancoaldao/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/yerayblancoaldao/.nuget/packages/microsoft.build/17.7.2/microsoft.build.17.7.2.nupkg.sha512",

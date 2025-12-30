@@ -1,4 +1,4 @@
-namespace MonitorPrices.Repository.Entities;
+namespace MonitorPrices.Domain.Entities;
 
 public class Product
 {

@@ -11,3 +11,17 @@
 /Users/yerayblancoaldao/RiderProjects/MonitorPrices/MonitorPrices.Domain/obj/Debug/net10.0/ref/MonitorPrices.Domain.dll
 /Users/yerayblancoaldao/RiderProjects/MonitorPrices/MonitorPrices.Domain/bin/Debug/net10.0/MonitorPrices.Domain.runtimeconfig.json
 /Users/yerayblancoaldao/RiderProjects/MonitorPrices/MonitorPrices.Domain/obj/Debug/net10.0/MonitorPrices.Domain.genruntimeconfig.cache
+/Users/yerayblancoaldao/Documents/GitHub/MonitorPrices/MonitorPrices.Domain/bin/Debug/net10.0/MonitorPrices.Domain.deps.json
+/Users/yerayblancoaldao/Documents/GitHub/MonitorPrices/MonitorPrices.Domain/bin/Debug/net10.0/MonitorPrices.Domain.runtimeconfig.json
+/Users/yerayblancoaldao/Documents/GitHub/MonitorPrices/MonitorPrices.Domain/bin/Debug/net10.0/MonitorPrices.Domain.dll
+/Users/yerayblancoaldao/Documents/GitHub/MonitorPrices/MonitorPrices.Domain/bin/Debug/net10.0/MonitorPrices.Domain.pdb
+/Users/yerayblancoaldao/Documents/GitHub/MonitorPrices/MonitorPrices.Domain/obj/Debug/net10.0/MonitorPrices.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/yerayblancoaldao/Documents/GitHub/MonitorPrices/MonitorPrices.Domain/obj/Debug/net10.0/MonitorPrices.Domain.AssemblyInfoInputs.cache
+/Users/yerayblancoaldao/Documents/GitHub/MonitorPrices/MonitorPrices.Domain/obj/Debug/net10.0/MonitorPrices.Domain.AssemblyInfo.cs
+/Users/yerayblancoaldao/Documents/GitHub/MonitorPrices/MonitorPrices.Domain/obj/Debug/net10.0/MonitorPrices.Domain.csproj.CoreCompileInputs.cache
+/Users/yerayblancoaldao/Documents/GitHub/MonitorPrices/MonitorPrices.Domain/obj/Debug/net10.0/MonitorPrices.Domain.sourcelink.json
+/Users/yerayblancoaldao/Documents/GitHub/MonitorPrices/MonitorPrices.Domain/obj/Debug/net10.0/MonitorPrices.Domain.dll
+/Users/yerayblancoaldao/Documents/GitHub/MonitorPrices/MonitorPrices.Domain/obj/Debug/net10.0/refint/MonitorPrices.Domain.dll
+/Users/yerayblancoaldao/Documents/GitHub/MonitorPrices/MonitorPrices.Domain/obj/Debug/net10.0/MonitorPrices.Domain.pdb
+/Users/yerayblancoaldao/Documents/GitHub/MonitorPrices/MonitorPrices.Domain/obj/Debug/net10.0/MonitorPrices.Domain.genruntimeconfig.cache
+/Users/yerayblancoaldao/Documents/GitHub/MonitorPrices/MonitorPrices.Domain/obj/Debug/net10.0/ref/MonitorPrices.Domain.dll
