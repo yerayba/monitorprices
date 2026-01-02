@@ -8,6 +8,7 @@
         <RootNamespace>Control_Panel</RootNamespace>
         <AssemblyName>$(AssemblyName.Replace(' ', '_'))</AssemblyName>
         <BlazorDisableThrowNavigationException>true</BlazorDisableThrowNavigationException>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     </PropertyGroup>
 
     <ItemGroup>
@@ -19,6 +20,12 @@
         <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="10.0.1"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.1"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.1"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
     </ItemGroup>
 
 </Project>

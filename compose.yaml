@@ -13,32 +13,27 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
-  monitorprices:
+  monitorprices-api:
     build:
       context: .
-      dockerfile: Dockerfile
-    container_name: monitorprices_container
+      dockerfile: MonitorPrices.API/Dockerfile
+    container_name: monitorprices_api
     depends_on:
       - postgres
     environment:
-      POSTGRES_HOST: postgres
-      POSTGRES_USER: myuser
-      POSTGRES_PASSWORD: mypassword
-      POSTGRES_DB: monitorpricesdb
       ConnectionStrings__DefaultConnection: "Host=postgres;Database=monitorpricesdb;Username=myuser;Password=mypassword"
     ports:
       - "8080:8080"
-      - "8081:8081"
 
   controlpanel:
     build:
-      context: ./ControlPanel
-      dockerfile: Dockerfile
-    container_name: controlpanel_container
+      context: .
+      dockerfile: ControlPanel/Dockerfile
+    container_name: controlpanel
     depends_on:
-      - monitorprices
+      - monitorprices-api
     environment:
-      API_URL: "http://monitorprices:8080" # ControlPanel usa esto para llamar a la API
+      API_URL: "http://monitorprices-api:8080"
     ports:
       - "5001:5001"
 
