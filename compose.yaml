@@ -16,7 +16,7 @@ services:
   monitorprices-api:
     build:
       context: .
-      dockerfile: MonitorPrices.API/Dockerfile
+      dockerfile: Dockerfile
     container_name: monitorprices_api
     depends_on:
       - postgres
