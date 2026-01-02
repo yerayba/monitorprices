@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MonitorPrices.Repository")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+33c486b44fe91a529f1d238f67031c4aa794d62f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b413b713bcef0d82f3dbb38018c91245fcb80a5f")]
 [assembly: System.Reflection.AssemblyProductAttribute("MonitorPrices.Repository")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MonitorPrices.Repository")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
