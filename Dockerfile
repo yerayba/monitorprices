@@ -17,28 +17,14 @@ ENV PATH="$PATH:/root/.dotnet/tools"
 FROM base AS build
 WORKDIR /src
 
-# Copiar solución y proyectos
-COPY MonitorPrices.sln ./
+# Copiar proyecto ControlPanel
+COPY ControlPanel/ControlPanel.csproj ControlPanel/
+RUN dotnet restore ControlPanel/ControlPanel.csproj
 
-COPY MonitorPrices.API/MonitorPrices.API.csproj MonitorPrices.API/
-COPY MonitorPrices.Domain/MonitorPrices.Domain.csproj MonitorPrices.Domain/
-COPY MonitorPrices.Repository/MonitorPrices.Repository.csproj MonitorPrices.Repository/
-COPY MonitorPrices.Services/MonitorPrices.Services.csproj MonitorPrices.Services/
+COPY ControlPanel/ ControlPanel/
+WORKDIR /src/ControlPanel
 
-# Restaurar dependencias
-RUN dotnet restore MonitorPrices.sln
-
-# Copiar el resto del código
-COPY . .
-
-# Compilar API
-WORKDIR /src/MonitorPrices.API
-RUN dotnet build -c Release -o /app/build
-
-# =========================
-# Publish
-# =========================
-FROM build AS publish
+# Publicar Blazor Server
 RUN dotnet publish -c Release -o /app/publish /p:UseAppHost=false
 
 # =========================
@@ -46,9 +32,9 @@ RUN dotnet publish -c Release -o /app/publish /p:UseAppHost=false
 # =========================
 FROM base AS final
 WORKDIR /app
+COPY --from=build /app/publish .
 
-# Copiar salida publicada
-COPY --from=publish /app/publish .
+# Exponer puerto de Blazor
+EXPOSE 5001
 
-# Ejecutar directamente la aplicación
-ENTRYPOINT ["dotnet", "MonitorPrices.API.dll"]
+ENTRYPOINT ["dotnet", "ControlPanel.dll"]

@@ -15,13 +15,13 @@ services:
 
   monitorprices:
     build:
-      context: .               # 👈 Ajustado: contexto raíz del proyecto
-      dockerfile: Dockerfile   # 👈 Mantiene tu Dockerfile desde raíz
+      context: .
+      dockerfile: Dockerfile
     container_name: monitorprices_container
     depends_on:
       - postgres
     environment:
-      POSTGRES_HOST: postgres          # 👈 Añadido para entrypoint.sh
+      POSTGRES_HOST: postgres
       POSTGRES_USER: myuser
       POSTGRES_PASSWORD: mypassword
       POSTGRES_DB: monitorpricesdb
@@ -29,6 +29,18 @@ services:
     ports:
       - "8080:8080"
       - "8081:8081"
+
+  controlpanel:
+    build:
+      context: ./ControlPanel
+      dockerfile: Dockerfile
+    container_name: controlpanel_container
+    depends_on:
+      - monitorprices
+    environment:
+      API_URL: "http://monitorprices:8080" # ControlPanel usa esto para llamar a la API
+    ports:
+      - "5001:5001"
 
 volumes:
   postgres_data:
