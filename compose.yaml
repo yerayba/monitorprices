@@ -34,6 +34,7 @@ services:
       - monitorprices-api
     environment:
       API_URL: "http://monitorprices-api:8080"
+      ASPNETCORE_URLS: "http://+:5001"  
     ports:
       - "5001:5001"
 
