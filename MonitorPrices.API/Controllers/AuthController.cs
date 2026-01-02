@@ -21,4 +21,15 @@ public class AuthController : ControllerBase
         var token = _authService.Login(request.Email, request.Password);
         return Ok(new { token });
     }
+    
+    [AllowAnonymous]
+    [HttpPost("register")]
+    public IActionResult Register(RegisterRequest request)
+    {
+        var register = _authService.Register(request.Email, request.Password);
+        return Ok(new { register });
+        
+    }
+    
+    
 }

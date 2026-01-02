@@ -1,0 +1,54 @@
+@page "/login"
+@using Control_Panel.Components.Models
+@using Microsoft.AspNetCore.Authorization
+@inject AuthService AuthService
+@inject JwtAuthStateProvider AuthState
+@inject NavigationManager Navigation
+
+<h3>Login</h3>
+
+<div>
+    <label>Email</label><br />
+    <input @bind="model.Email" type="email" />
+</div>
+
+<div>
+    <label>Contraseña</label><br />
+    <input @bind="model.Password" type="password" />
+</div>
+
+<br />
+
+<button @onclick="LoginUser">Iniciar Sesión</button>
+
+<p>
+    ¿No tienes cuenta? 
+    <NavLink href="/Register">Registrar</NavLink>
+</p>
+
+@if (!string.IsNullOrEmpty(message))
+{
+    <p>@message</p>
+}
+
+@code {
+    
+    [Parameter] public EventCallback<string> OnLogin { get; set; }
+
+    private LoginModel model = new();
+    private string? message;
+
+    private async Task LoginUser()
+    {
+        if (string.IsNullOrWhiteSpace(model.Email) || string.IsNullOrWhiteSpace(model.Password))
+        {
+            message = "Por favor completa todos los campos.";
+            return;
+        }
+
+        var response = await AuthService.LoginAsync(model.Email, model.Password);
+
+        AuthState.SetToken(response!);
+        Navigation.NavigateTo("/");
+    }
+}

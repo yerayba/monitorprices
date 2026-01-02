@@ -18,4 +18,23 @@ public class UserRepository : IUserRepository
             .AsNoTracking()
             .FirstOrDefault(u => u.Email == email);
     }
+
+    public User? RegisterByEmail(string email, string password)
+    {
+        // Verificar si el usuario ya existe
+        var existingUser = _context.Users.FirstOrDefault(u => u.Email == email);
+        if (existingUser != null)
+            return null;
+
+        var user = new User
+        {
+            Email = email,
+            PasswordHas = password //TODO: contraseña en texto plano...
+        };
+
+        _context.Users.Add(user);
+        _context.SaveChanges();
+
+        return user;
+    }
 }

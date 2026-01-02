@@ -23,8 +23,7 @@ public class AuthService : IAuthService
         var user = _userRepository.GetByEmail(email);
         if (user == null)
             throw new UnauthorizedAccessException("Credenciales inválidas");
-
-        // Aquí deberías validar hash
+        
         if (user.PasswordHas != password)
             throw new UnauthorizedAccessException("Credenciales inválidas");
 
@@ -38,12 +37,12 @@ public class AuthService : IAuthService
         var claims = new[]
         {
             new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
-            new Claim(JwtRegisteredClaimNames.Email, user.Email),
-            new Claim(ClaimTypes.Role, user.Role)
+            new Claim(JwtRegisteredClaimNames.Email, user.Email!),
+            new Claim(ClaimTypes.Role, user.Role!)
         };
 
         var key = new SymmetricSecurityKey(
-            Encoding.UTF8.GetBytes(jwt["Key"])
+            Encoding.UTF8.GetBytes(jwt["Key"]!)
         );
 
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -52,10 +51,26 @@ public class AuthService : IAuthService
             issuer: jwt["Issuer"],
             audience: jwt["Audience"],
             claims: claims,
-            expires: DateTime.UtcNow.AddMinutes(int.Parse(jwt["ExpireMinutes"])),
+            expires: DateTime.UtcNow.AddMinutes(int.Parse(jwt["ExpireMinutes"]!)),
             signingCredentials: creds
         );
 
         return new JwtSecurityTokenHandler().WriteToken(token);
     }
+
+    public string Register(string email, string password)
+    {
+        if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
+        {
+            throw new Exception("Email and/or password can't be empty");
+        }
+
+        var register = _userRepository.RegisterByEmail(email, password);
+
+        if (register == null)
+            return "User already exists";
+
+        return "User registered successfully";
+    }
+
 }
