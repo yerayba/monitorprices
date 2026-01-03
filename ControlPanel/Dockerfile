@@ -4,8 +4,6 @@ WORKDIR /app
 EXPOSE 5000
 EXPOSE 5001
 
-ENV ASPNETCORE_URLS=http://+:5000;https://+:5001
-
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src

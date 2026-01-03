@@ -14,7 +14,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonitorPrices.Domain", "Mon
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonitorPrices.Repository", "MonitorPrices.Repository\MonitorPrices.Repository.csproj", "{9D79CE09-CFBC-4D68-9BAB-F6C97B49852C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlPanel", "ControlPanel\ControlPanel.csproj", "{D0FE0F86-7369-47EC-BAC4-B046097DE0FF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlPanel", "ControlPanel\ControlPanel.csproj", "{C849B18A-5BA0-4145-A03A-7104A29A0101}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,9 +38,9 @@ Global
 		{9D79CE09-CFBC-4D68-9BAB-F6C97B49852C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D79CE09-CFBC-4D68-9BAB-F6C97B49852C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D79CE09-CFBC-4D68-9BAB-F6C97B49852C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D0FE0F86-7369-47EC-BAC4-B046097DE0FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D0FE0F86-7369-47EC-BAC4-B046097DE0FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D0FE0F86-7369-47EC-BAC4-B046097DE0FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D0FE0F86-7369-47EC-BAC4-B046097DE0FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C849B18A-5BA0-4145-A03A-7104A29A0101}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C849B18A-5BA0-4145-A03A-7104A29A0101}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C849B18A-5BA0-4145-A03A-7104A29A0101}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C849B18A-5BA0-4145-A03A-7104A29A0101}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

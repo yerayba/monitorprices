@@ -4,28 +4,14 @@
         <TargetFramework>net10.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <UserSecretsId>aspnet-Control_Panel-f4c96955-d1a3-47cb-abe9-020b1bb170d5</UserSecretsId>
-        <RootNamespace>Control_Panel</RootNamespace>
-        <AssemblyName>$(AssemblyName.Replace(' ', '_'))</AssemblyName>
         <BlazorDisableThrowNavigationException>true</BlazorDisableThrowNavigationException>
-        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     </PropertyGroup>
 
-    <ItemGroup>
-        <None Update="Data\app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="10.0.1"/>
-        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="10.0.1"/>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.1"/>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.1"/>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Content Include="..\.dockerignore">
-        <Link>.dockerignore</Link>
-      </Content>
-    </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\.dockerignore">
+      <Link>.dockerignore</Link>
+    </Content>
+  </ItemGroup>
 
 </Project>

@@ -10,11 +10,10 @@
 using System;
 using System.Reflection;
 
-[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("aspnet-Control_Panel-f4c96955-d1a3-47cb-abe9-020b1bb170d5")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("ControlPanel")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a0656a5b64564d33c011ef4ad25f9059bab9a07a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c50693d4a980c9d9662b8e31d04ef409fab9299a")]
 [assembly: System.Reflection.AssemblyProductAttribute("ControlPanel")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ControlPanel")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
