@@ -1,17 +1,11 @@
 
 @page "/register"
-@using System.ComponentModel.DataAnnotations
+@rendermode InteractiveServer
 @using ControlPanel.Components.Models
 @inject HttpClient Http
 @inject NavigationManager Nav
 
 <h3>Registro</h3>
-
-<EditForm Model="model"
-          OnValidSubmit="RegisterAsync"
-          FormName="RegisterForm">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
 
     <div>
         <label>Email</label>
@@ -28,8 +22,8 @@
         <InputText type="password" @bind-Value="model.ConfirmPassword" />
     </div>
 
-    <button type="submit">Registrarse</button>
-</EditForm>
+<button @onclick="RegisterAsync">Registrase</button>
+
 
 @code {
     
@@ -37,10 +31,18 @@
 
     private async Task RegisterAsync()
     {
-        var response = await Http.PostAsJsonAsync("http://192.168.0.24:8080/auth/register", model);
+        var response = await Http.PostAsJsonAsync("http://192.168.0.24:8080/api/auth/register", model);
+        Console.WriteLine($"STATUS: {response.StatusCode}");
+
         if (response.IsSuccessStatusCode)
         {
+            var token = await response.Content.ReadAsStringAsync();
             Nav.NavigateTo("/login");
+        }
+        else
+        {
+            var error = await response.Content.ReadAsStringAsync();
+            Console.WriteLine(error);
         }
     }
     
