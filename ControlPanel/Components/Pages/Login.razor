@@ -1,8 +1,12 @@
 @page "/login"
+@attribute [AllowAnonymous]
 @rendermode InteractiveServer
 @using ControlPanel.Components.Models
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.Authorization
 @inject HttpClient Http
 @inject NavigationManager Nav
+@inject AuthenticationStateProvider _authStateProvider
 
 <h3>Login</h3>
 
@@ -32,11 +36,25 @@
         var response = await Http.PostAsJsonAsync(
             "http://192.168.0.24:8080/api/auth/login", model);
 
-        Console.WriteLine($"STATUS: {response.StatusCode}");
-
         if (response.IsSuccessStatusCode)
         {
-            var token = await response.Content.ReadAsStringAsync();
+            // Cambia LoginRequest por LoginResponse si tu API devuelve { token, ... }
+            var loginResponse = await response.Content.ReadFromJsonAsync<LoginRequest>();
+
+            if (loginResponse is null || string.IsNullOrEmpty(loginResponse.Token))
+            {
+                Console.WriteLine("Token vacío o respuesta inválida");
+                return;
+            }
+
+            // Notifica al AuthenticationStateProvider
+            if (_authStateProvider is JwtAuthenticationStateProvider jwtProvider)
+            {
+                await jwtProvider.LoginAsync(loginResponse.Token);
+                
+            }
+
+            // Redirige al home
             Nav.NavigateTo("/");
         }
         else
@@ -46,3 +64,6 @@
         }
     }
 }
+
+            
+           

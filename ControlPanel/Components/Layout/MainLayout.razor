@@ -1,23 +1,64 @@
 ﻿@inherits LayoutComponentBase
+@using Microsoft.AspNetCore.Components.Authorization
+@inject AuthenticationStateProvider AuthProvider
+@inject  JwtAuthenticationStateProvider _jwt
+@inject NavigationManager Nav
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu/>
-    </div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">ControlPanel</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <AuthorizeView>
+                    <Authorized>
+                        <li class="nav-item">
+                            <NavLink class="nav-link" href="">Home</NavLink>
+                        </li>
+                        <li class="nav-item">
+                            <button class="btn btn-link nav-link" @onclick="Logout">Logout</button>
+                        </li>
+                        <li class="nav-item">
+                            <NavLink class="nav-link" href="MonitorPrices">Monitor Prices</NavLink>
+                        </li>
+                    </Authorized>
+                    <NotAuthorized>
+                        <li class="nav-item">
+                            <NavLink class="nav-link" href="Login">Login</NavLink>
+                        </li>
+                    </NotAuthorized>
+                </AuthorizeView>
+            </ul>
         </div>
+    </div>
+</nav>
 
-        <article class="content px-4">
-            @Body
-        </article>
-    </main>
+<div class="container mt-3">
+    @Body
 </div>
 
-<div id="blazor-error-ui" data-nosnippet>
-    An unhandled error has occurred.
-    <a href="." class="reload">Reload</a>
-    <span class="dismiss">🗙</span>
-</div>
+@code {
+    
+    
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await  _jwt.GetAuthenticationStateAsync();
+        }
+    }
+    
+    private async Task Logout()
+    {
+        if (AuthProvider is JwtAuthenticationStateProvider jwtProvider)
+        {
+            await jwtProvider.LogoutAsync();
+        }
+
+        Nav.NavigateTo("/login");
+    }
+}
