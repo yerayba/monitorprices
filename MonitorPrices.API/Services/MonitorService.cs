@@ -8,7 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MonitorPrices.Repository;
 
-namespace MonitorPrices.Services.Services
+namespace MonitorPrices.Services
 {
     public class PriceMonitorService : BackgroundService
     {
