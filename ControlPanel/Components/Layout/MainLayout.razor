@@ -1,7 +1,6 @@
 ﻿@inherits LayoutComponentBase
 @using Microsoft.AspNetCore.Components.Authorization
-@inject AuthenticationStateProvider AuthProvider
-@inject  JwtAuthenticationStateProvider _jwt
+@inject JwtAuthenticationStateProvider AuthProvider
 @inject NavigationManager Nav
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -16,20 +15,12 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <AuthorizeView>
                     <Authorized>
-                        <li class="nav-item">
-                            <NavLink class="nav-link" href="">Home</NavLink>
-                        </li>
-                        <li class="nav-item">
-                            <button class="btn btn-link nav-link" @onclick="Logout">Logout</button>
-                        </li>
-                        <li class="nav-item">
-                            <NavLink class="nav-link" href="MonitorPrices">Monitor Prices</NavLink>
-                        </li>
+                        <li class="nav-item"><NavLink class="nav-link" href="/">Home</NavLink></li>
+                        <li class="nav-item"><NavLink class="nav-link" href="MonitorPrices">Monitor Prices</NavLink></li>
+                        <li class="nav-item"><button class="btn btn-link nav-link" @onclick="Logout">Logout</button></li>
                     </Authorized>
                     <NotAuthorized>
-                        <li class="nav-item">
-                            <NavLink class="nav-link" href="Login">Login</NavLink>
-                        </li>
+                        <li class="nav-item"><NavLink class="nav-link" href="Login">Login</NavLink></li>
                     </NotAuthorized>
                 </AuthorizeView>
             </ul>
@@ -42,23 +33,21 @@
 </div>
 
 @code {
-    
-    
+    private bool _tokenLoaded = false;
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (firstRender)
+        if (firstRender && !_tokenLoaded)
         {
-            await  _jwt.GetAuthenticationStateAsync();
+            _tokenLoaded = true;
+            await AuthProvider.LoadTokenAsync();
+            StateHasChanged();
         }
     }
-    
+
     private async Task Logout()
     {
-        if (AuthProvider is JwtAuthenticationStateProvider jwtProvider)
-        {
-            await jwtProvider.LogoutAsync();
-        }
-
-        Nav.NavigateTo("/login");
+        await AuthProvider.LogoutAsync();
+        Nav.NavigateTo("/login", true);
     }
 }

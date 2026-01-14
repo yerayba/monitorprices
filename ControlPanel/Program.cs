@@ -3,8 +3,8 @@ using ControlPanel.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.IdentityModel.Tokens;
-using System.Text;
 using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,46 +13,48 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 builder.Services.AddServerSideBlazor();
+
+// Protected storage
 builder.Services.AddScoped<ProtectedLocalStorage>();
+
+// Auth services
 builder.Services.AddScoped<ITokenStorage, TokenStorage>();
-builder.Services.AddScoped<AuthenticationStateProvider, JwtAuthenticationStateProvider>();
 builder.Services.AddScoped<JwtAuthenticationStateProvider>();
-builder.Services.AddAuthorizationCore();
-
-
-// HttpClient
-builder.Services.AddHttpClient();
-
-// 🔐 Authentication (OBLIGATORIO para [Authorize])
-builder.Services.AddAuthentication(options =>
-    {
-        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-    })
-    .AddJwtBearer(options =>
-    {
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuer = false,
-            ValidateAudience = false,
-            ValidateLifetime = false, // 👈 IMPORTANTE en Blazor Server
-            ValidateIssuerSigningKey = false
-        };
-    });
+builder.Services.AddScoped<AuthenticationStateProvider>(sp =>
+    sp.GetRequiredService<JwtAuthenticationStateProvider>());
 
 // Authorization
-builder.Services.AddAuthorization();
-
-// Blazor auth state
+builder.Services.AddAuthorizationCore();
 builder.Services.AddCascadingAuthenticationState();
-builder.Services.AddScoped<AuthenticationStateProvider, JwtAuthenticationStateProvider>();
 
-// Token storage
-builder.Services.AddScoped<ITokenStorage, TokenStorage>();
+// HttpClient con DelegatingHandler para enviar token automáticamente
+builder.Services.AddTransient<TokenAuthorizationHandler>();
+builder.Services.AddHttpClient("ApiClient", client =>
+{
+    client.BaseAddress = new Uri("http://192.168.0.24:8080"); // Cambia a tu API
+})
+.AddHttpMessageHandler<TokenAuthorizationHandler>();
 
+// JWT Authentication (necesario para [Authorize] aunque sea Server)
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ValidateLifetime = false, // ⚠ Blazor Server normalmente no valida exp
+        ValidateIssuerSigningKey = false
+    };
+});
+
+// Middleware pipeline
 var app = builder.Build();
 
-// Pipeline
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error", createScopeForErrors: true);
@@ -65,10 +67,11 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseAntiforgery();
 
-// 🔐 MUY IMPORTANTE: ORDEN CORRECTO
+// 🔐 ORDEN IMPORTANTE
 app.UseAuthentication();
 app.UseAuthorization();
 
+// Mapear App.razor
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 

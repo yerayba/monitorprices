@@ -13,18 +13,16 @@ public class JwtAuthenticationStateProvider : AuthenticationStateProvider
         _tokenStorage = tokenStorage;
     }
 
-    // Devuelve un usuario anónimo durante prerendering
+    // Devuelve el estado actual del usuario
     public override Task<AuthenticationState> GetAuthenticationStateAsync()
     {
-        //TODO: es anonimo, por eso no funciona el Authorize, buscar solucion.
-        return Task.FromResult(new AuthenticationState(new ClaimsPrincipal()));
+        return Task.FromResult(new AuthenticationState(_user));
     }
 
-    // Llamar desde OnAfterRenderAsync cuando JS está disponible
+    // Llamar desde OnAfterRenderAsync para cargar el token
     public async Task LoadTokenAsync()
     {
         var token = await _tokenStorage.GetTokenAsync();
-
         if (!string.IsNullOrWhiteSpace(token))
         {
             var claims = ParseClaimsFromJwt(token);
@@ -57,4 +55,7 @@ public class JwtAuthenticationStateProvider : AuthenticationStateProvider
         var token = handler.ReadJwtToken(jwt);
         return token.Claims;
     }
+
+    // Método para obtener token en HttpClient
+    public async Task<string> GetTokenAsync() => await _tokenStorage.GetTokenAsync() ?? "";
 }
