@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ControlPanel")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+48135d07b183b0f86ce4e3898a9030e7e01f4100")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cf93950f07700088ac54df1762750bd3dfe01733")]
 [assembly: System.Reflection.AssemblyProductAttribute("ControlPanel")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ControlPanel")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

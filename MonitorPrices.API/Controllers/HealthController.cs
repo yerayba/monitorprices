@@ -20,7 +20,7 @@ public class HealthController : ControllerBase
         return Ok(new
         {
             status = "OK",
-            message = "Pong..! V.2.0",
+            message = "Pong..! V.2.1",
             timestamp = DateTime.UtcNow
         });
     }
